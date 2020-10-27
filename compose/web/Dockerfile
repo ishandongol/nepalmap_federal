@@ -1,4 +1,4 @@
-FROM library/python:2.7.14-stretch
+FROM library/python:3.7.9-stretch
 
 ENV PYTHONUNBUFFERED="true" \
     PATH="/usr/src/app/compose/web/bin:/usr/src/app/compose/common/bin:${PATH}" \
@@ -16,7 +16,6 @@ WORKDIR /usr/src/app
 
 COPY requirements.txt /usr/src/app/requirements.txt
 RUN pip install --no-cache-dir --global-option=build_ext --global-option="-I/usr/include/gdal/" -r requirements.txt
-
 COPY . /usr/src/app/
 
 ENTRYPOINT ["/usr/src/app/compose/web/entrypoint.sh"]
